@@ -1,0 +1,113 @@
+// @import 'global';
+
+.Banner
+{
+    height: 400px;
+    position: relative;
+
+    .Media
+    {
+        background-color: white;
+        height: 100%;
+        overflow: hidden;
+padding:20px;
+        position: relative;
+
+        .MediaCaption
+        {
+            text-overflow: ellipsis;
+            
+            position: absolute;
+            bottom: 0;
+            padding: 15px;
+            // margin: 0 auto;
+            background-color: black;
+            color: white;
+            opacity: 0.6;
+            width: 100%;
+            bottom: 60px;
+            text-align: center;
+            border: 2px solid orange;
+
+
+            font:
+            {
+                size:21px;
+                weight: 200;
+            }
+
+            transition: 300ms;
+            cursor: pointer;
+            &:hover
+            {
+                opacity: 0.8;
+            }
+            
+        }
+
+        transition: 300ms;
+        cursor: pointer;
+        &:hover
+        {
+            filter: brightness(115%);
+        }
+    }
+
+    .BannerGrid
+    {
+        height: 100%;
+        position: relative;
+    }
+
+    .Content
+    {
+        color: white;
+        background-color: orange;
+        height: 100%;
+        
+        position: relative;
+
+        cursor: pointer;
+
+        padding: 30px;
+
+        transition: 300ms;
+
+        &:hover, &:active
+        {
+            background-color:orange;
+
+            .ViewButton
+            {
+                background-color: rgb(241, 241, 241);
+                color: orange;
+            }
+        }
+
+        .Title
+        {
+            font-size: 30px;
+            font-weight: 500;
+            color: white;
+        }
+
+        .Caption
+        {
+            margin-top: 10px;
+            font-size: 18px;
+            color: white;
+        }
+
+        .ViewButton
+        {
+            margin-top: 40px;
+            color: white;
+
+            font-size: 25px;
+            border: 3px solid white;
+            text-transform: capitalize;
+
+            transition: 200ms;
+        }
+    }
+}

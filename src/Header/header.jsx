@@ -1,18 +1,16 @@
 import * as React from "react";
 import {
-  Box,
   Toolbar,
   Typography,
-  List,
-  ListItem,
-  ListItemAvatar,
-  Avatar,
-  Divider,
 } from "@mui/material";
 import { colors } from "../constant/constant";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+
+  const navigate = useNavigate()
+
   return (
     <>
       <Toolbar
@@ -42,6 +40,10 @@ const Header = () => {
             height: "50px",
             width: "50px",
             marginLeft: "auto",
+            cursor:"pointer"
+          }}
+          onClick={() => {
+            navigate("/cart")
           }}
         />
       </Toolbar>
