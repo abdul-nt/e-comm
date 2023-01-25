@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Box,
   Button,
@@ -101,17 +101,17 @@ const Cart = () => {
           cartItems[existingItemIndex].totalPrice = existingItem.totalPrice;
           localStorage.setItem("cart", JSON.stringify(cartItems));
         } else {
-          let data = cartItems.filter((item) => item.id != itemID);
+          let data = cartItems.filter((item) => item.id !== itemID);
           localStorage.setItem("cart", JSON.stringify(data));
           setCartItems(data);
         }
       } else {
-        let data = cartItems.filter((item) => item.id != itemID);
+        let data = cartItems.filter((item) => item.id !== itemID);
         localStorage.setItem("cart", JSON.stringify(data));
         setCartItems(data);
       }
     } else {
-      let data = cartItems.filter((item) => item.id != itemID);
+      let data = cartItems.filter((item) => item.id !== itemID);
       localStorage.setItem("cart", JSON.stringify(data));
       setCartItems(data);
     }

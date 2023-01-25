@@ -5,8 +5,8 @@ import { colors } from "../constant/constant";
 import { slideInBottom } from "../animations";
 import { useEffect } from "react";
 import Snackbar from "@mui/material/Snackbar";
-import MuiAlert, { AlertProps } from "@mui/material/Alert";
-import { useNavigate } from "react-router-dom";
+import MuiAlert from "@mui/material/Alert";
+
 
 export const Product = styled(Box)(({ theme }) => ({
   display: "flex",
