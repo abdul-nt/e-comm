@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Box, Button, Container, Grid } from "@mui/material";
+import { Button, Container, Grid } from "@mui/material";
 import { colors, products } from "../constant/constant";
 import styled from "@emotion/styled";
 import { useTheme } from "@mui/material/styles";
@@ -39,31 +38,6 @@ export const AddToCart = styled(Button, {
 const Products = () => {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
-  const [showOptions, setShowOptions] = useState(false);
-
-  const handleMouseEnter = () => {
-    setShowOptions(true);
-  };
-  const handleMouseLeave = () => {
-    setShowOptions(false);
-  };
-
-  console.log("products", products);
-
-  const renderProducts = products.map((product) => (
-    <Grid
-      item
-      key={product.id}
-      xs={2}
-      sm={4}
-      md={4}
-      display="flex"
-      flexDirection={"column"}
-      alignItems="center"
-    >
-      <SingleProduct product={product} matches={matches} />
-    </Grid>
-  ));
 
   return (
     <>
@@ -75,7 +49,22 @@ const Products = () => {
           sx={{ margin: `20px 4px 10px 4px` }}
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
-          {renderProducts}
+          {products.map((product, index) => {
+            return (
+              <Grid
+                item
+                key={index}
+                xs={2}
+                sm={4}
+                md={4}
+                display="flex"
+                flexDirection={"column"}
+                alignItems="center"
+              >
+                <SingleProduct product={product} matches={matches} />
+              </Grid>
+            );
+          })}
         </Grid>
       </Container>
     </>
