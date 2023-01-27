@@ -4,10 +4,11 @@ import {
   Button,
   ButtonGroup,
   Container,
+  FormControl,
   TextField,
   Typography,
 } from "@mui/material";
-import { colors } from "../constant/constant";
+import { colors, quantityRange } from "../constant/constant";
 import Header from "../Header/header";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -27,7 +28,6 @@ const Cart = () => {
   const navigate = useNavigate();
   const [cartItems, setCartItems] = useState();
   const [cartLength, setCartLength] = useState(0);
-  const [showInput, setShowInput] = useState(false);
 
   useEffect(() => {
     onCart();
@@ -49,17 +49,25 @@ const Cart = () => {
     return price;
   };
 
-  const onAdd = (values, input) => {
+  const onAdd = (values, quantity) => {
     let existingItem = cartItems.find((obj) => obj.id === values.id);
+    if (existingItem.quantity === quantityRange.max) return;
     if (existingItem) {
-      existingItem.quantity = existingItem.quantity + input ? input : 1;
+      if (quantity) {
+        existingItem.quantity = quantity;
+      } else {
+        existingItem.quantity = existingItem.quantity + 1;
+      }
+
       existingItem.tax =
         ((existingItem.price * 1.23) / 100) * existingItem.quantity;
+
       existingItem.totalPrice = totalPrice(existingItem) + existingItem.tax;
 
       let existingItemIndex = cartItems.findIndex(
         (obj) => obj.id === existingItem.id
       );
+
       cartItems[existingItemIndex].quantity = existingItem.quantity;
       cartItems[existingItemIndex].tax = existingItem.tax;
       cartItems[existingItemIndex].totalPrice = existingItem.totalPrice;
@@ -79,6 +87,16 @@ const Cart = () => {
       localStorage.setItem("cart", JSON.stringify(cartItems));
     }
     onCart();
+  };
+
+  const handleChange = (element, e) => {
+    if (e.target.value > quantityRange.max) return;
+    if (e.target.value > 0) {
+      onAdd(element, e.target.value);
+    } else {
+      removeItem(element.id, "multiple");
+    }
+    // onAdd(element, e.target.value);
   };
 
   const removeItem = (itemID, action) => {
@@ -122,7 +140,7 @@ const Cart = () => {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Header />
+        <Header cartLength={cartLength} />
         <Container sx={{ marginTop: "50px" }}>
           <TableContainer component={Paper}>
             <Table
@@ -199,26 +217,23 @@ const Cart = () => {
                                 >
                                   <RemoveIcon />
                                 </Button>
-                                {showInput ? (
+                                <FormControl>
                                   <TextField
-                                    id="outlined-basic"
+                                    sx={{ width: "60px" }}
+                                    InputProps={{
+                                      inputProps: {
+                                        min: quantityRange.min,
+                                        max: quantityRange.max,
+                                      },
+                                    }}
+                                    type="number"
+                                    variant="filled"
                                     value={element.quantity}
                                     onChange={(e) => {
-                                      console.log("e", e.target.value);
-                                      onAdd(element, e.target.value);
+                                      handleChange(element, e);
                                     }}
-                                    variant="outlined"
                                   />
-                                ) : (
-                                  <Button
-                                    onClick={() => {
-                                      setShowInput(true);
-                                    }}
-                                  >
-                                    {element.quantity}
-                                  </Button>
-                                )}
-
+                                </FormControl>
                                 <Button
                                   onClick={() => {
                                     onAdd(element);
@@ -287,7 +302,7 @@ const Cart = () => {
                 <Typography variant="h6" fontWeight={400}>
                   {cartItems?.reduce(
                     (sum, { price, quantity }) =>
-                      sum + Math.round(price * quantity * 100) / 100,
+                      (Number(sum) + price * quantity).toFixed(2),
                     0
                   )}
                 </Typography>
@@ -303,7 +318,8 @@ const Cart = () => {
                 <Typography variant="h6">Total Quantity</Typography>
                 <Typography variant="h6" fontWeight={400}>
                   {cartItems?.reduce(
-                    (sum, { price, quantity }) => sum + quantity,
+                    (sum, { quantity }) =>
+                      (Number(sum) + Number(quantity))?.toFixed(2),
                     0
                   )}
                 </Typography>
@@ -319,7 +335,23 @@ const Cart = () => {
                 <Typography variant="h6">Total Tax</Typography>
                 <Typography variant="h6" fontWeight={400}>
                   {cartItems?.reduce(
-                    (sum, { tax }) => sum + Math.round(tax),
+                    (a, { tax }) => (Number(a) + tax).toFixed(2),
+                    0
+                  )}
+                </Typography>
+              </Box>
+
+              <Box
+                display="flex"
+                justifyContent={"space-between"}
+                alignItems="center"
+                marginBottom={"10px"}
+              >
+                <Typography variant="h6">Total Price with Tax</Typography>
+                <Typography variant="h6" fontWeight={400}>
+                  {cartItems?.reduce(
+                    (a, { tax, price, quantity }) =>
+                      (Number(a) + tax + price * quantity).toFixed(2),
                     0
                   )}
                 </Typography>
@@ -333,9 +365,10 @@ const Cart = () => {
               >
                 <Typography variant="h6">Shipping Fees LKR</Typography>
                 <Typography variant="h6" fontWeight={400}>
-                  500
+                  500.00
                 </Typography>
               </Box>
+
               <Box
                 display="flex"
                 justifyContent={"space-between"}
@@ -348,7 +381,7 @@ const Cart = () => {
                 <Typography variant="h6" fontWeight={400}>
                   {cartItems?.reduce(
                     (sum, { totalPrice }) =>
-                      sum + Math.round(totalPrice * 100) / 100,
+                      (Number(sum) + totalPrice).toFixed(2),
                     500
                   )}
                 </Typography>
@@ -400,6 +433,7 @@ const Cart = () => {
                 varient="outlined"
                 onClick={() => {
                   localStorage.removeItem("cart");
+                  setCartLength(0);
                   onCart();
                 }}
               >

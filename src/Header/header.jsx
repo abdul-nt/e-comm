@@ -3,32 +3,15 @@ import { Badge, Toolbar, Typography } from "@mui/material";
 import { colors } from "../constant/constant";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
 
-const Header = () => {
+const Header = ({ cartLength }) => {
   const navigate = useNavigate();
-  const [items, setItems] = useState();
-
-  useEffect(() => {
-    onCart();
-  }, [items]);
-
-  const onCart = () => {
-    try {
-      let data = JSON.parse(localStorage.getItem("cart"));
-      setItems(data?.length);
-    } catch (e) {
-      console.log("e", e);
-    }
-  };
 
   return (
     <>
       <Toolbar
         sx={{
           padding: "20px",
-          //   justifyContent: "center",
-
           backgroundColor: `${colors.primaryColor}`,
         }}
       >
@@ -57,7 +40,7 @@ const Header = () => {
           sx={{
             marginLeft: "auto",
           }}
-          badgeContent={`${items ? items : 0}`}
+          badgeContent={`${cartLength ? cartLength : 0}`}
         >
           <LocalMallIcon
             sx={{

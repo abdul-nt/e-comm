@@ -35,13 +35,16 @@ export const AddToCart = styled(Button, {
   opacity: 0.9,
 }));
 
-const Products = () => {
+const Products = ({onCart,onAddCart, cartItems}) => {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <>
+
+    
       <Container>
+        
         <Grid
           container
           spacing={{ xs: 2, md: 3 }}
@@ -61,7 +64,7 @@ const Products = () => {
                 flexDirection={"column"}
                 alignItems="center"
               >
-                <SingleProduct product={product} matches={matches} />
+                <SingleProduct onCart={onCart} onAddCart={onAddCart} product={product} matches={matches} cartItems={cartItems} />
               </Grid>
             );
           })}

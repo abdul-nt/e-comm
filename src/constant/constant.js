@@ -17,6 +17,11 @@ export const colors = {
   grey: "#6c6c6c",
 };
 
+export const quantityRange = {
+  min: 1,
+  max: 10,
+};
+
 export const bannerItems = [
   {
     Name: "Christmas Cards",

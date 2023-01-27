@@ -6,8 +6,13 @@ import { bannerItems, colors } from "../constant/constant";
 import { Banner } from "./Banner/banner";
 import { Box } from "@mui/material";
 import Products from "../Products/product";
+import Header from "../Header/header";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const Home = () => {
+  const [cartLength, setCartLength] = useState(0);
+  const [cartItems, setCartItems] = useState([]);
   const sliderSettings = {
     autoPlay: true,
     animation: "fade",
@@ -20,13 +25,35 @@ const Home = () => {
     swipe: true,
   };
 
+  useEffect(() => {
+    onCart();
+  }, []);
+
+  const onCart = () => {
+    try {
+      let data = JSON.parse(localStorage.getItem("cart"));
+      setCartItems(data);
+      setCartLength(data?.length);
+    } catch (e) {
+      console.log("e", e);
+    }
+  };
+
+  const onAddCart = (() => {
+    const fieldValue = localStorage.getItem("cart");
+    return fieldValue === null ? [] : JSON.parse(fieldValue);
+  })();
+
   return (
     <>
-      <Box margin={"50px"} bgcolor="grey" border={`2px solid ${colors.primaryColor}`}>
-        <Carousel
-          className="Example"
-          {...sliderSettings}
-        >
+      {/* {console.log("cartLength", cartLength)} */}
+      <Header cartLength={cartLength} />
+      <Box
+        margin={"50px"}
+        bgcolor="grey"
+        border={`2px solid ${colors.primaryColor}`}
+      >
+        <Carousel className="Example" {...sliderSettings}>
           {bannerItems.map((item, index) => {
             return (
               <Banner
@@ -36,11 +63,10 @@ const Home = () => {
               />
             );
           })}
-        </Carousel>    
+        </Carousel>
       </Box>
 
-      
-      <Products/>
+      <Products onCart={onCart} onAddCart={onAddCart} cartItems={cartItems}/>
     </>
   );
 };

@@ -3,10 +3,8 @@ import styled from "@emotion/styled";
 import { Box, Button } from "@mui/material";
 import { colors } from "../constant/constant";
 import { slideInBottom } from "../animations";
-import { useEffect } from "react";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
-
 
 export const Product = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -56,25 +54,10 @@ const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-export default function SingleProduct({ product, matches }) {
+export default function SingleProduct({ onCart,onAddCart, product, matches, cartItems }) {
   const [showOptions, setShowOptions] = useState(false);
   const [show, setShow] = useState(false);
   const [addToCart, setAddToCart] = useState(false);
-
-  const [cartItems, setCartItems] = useState([]);
-
-  useEffect(() => {
-    onCart();
-  }, []);
-
-  const onCart = () => {
-    try {
-      let data = JSON.parse(localStorage.getItem("cart"));
-      setCartItems(data);
-    } catch (e) {
-      console.log("e", e);
-    }
-  };
 
   const handleMouseEnter = () => {
     setShowOptions(true);
@@ -82,11 +65,6 @@ export default function SingleProduct({ product, matches }) {
   const handleMouseLeave = () => {
     setShowOptions(false);
   };
-
-  const onAddCart = (() => {
-    const fieldValue = localStorage.getItem("cart");
-    return fieldValue === null ? [] : JSON.parse(fieldValue);
-  })();
 
   const handleClose = () => {
     setShow(false);
