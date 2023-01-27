@@ -1,4 +1,4 @@
-import Home from "../../Home/home";
+import Home from "./home";
 import MainLayout from "../../mainlayout/Mainlayout";
 import theme from "../../theme";
 import { ThemeProvider } from "@mui/system";

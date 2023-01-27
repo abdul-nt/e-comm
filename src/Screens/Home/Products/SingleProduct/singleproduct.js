@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { Box, Button } from "@mui/material";
-import { colors } from "../constant/constant";
-import { slideInBottom } from "../animations";
+import { colors } from "../../../../constant/constant";
+import { slideInBottom } from "../../../../animations";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 

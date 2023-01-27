@@ -5,23 +5,23 @@ import {
   ButtonGroup,
   Container,
   FormControl,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
   TextField,
   Typography,
 } from "@mui/material";
-import { colors, quantityRange } from "../constant/constant";
-import Header from "../Header/header";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
+import { ThemeProvider } from "@mui/system";
+import Header from "../../../Components/Header/header";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { ThemeProvider } from "@mui/system";
-import theme from "../theme";
+import theme from "../../../theme";
+import { colors, quantityRange } from "../../../constant/constant";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {

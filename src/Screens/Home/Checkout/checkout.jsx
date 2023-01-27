@@ -1,9 +1,9 @@
 import React from "react";
 import { Box, Button, Container, Typography } from "@mui/material";
 import { ThemeProvider } from "@mui/system";
-import { colors } from "../constant/constant";
-import theme from "../theme";
-import Header from "../Header/header";
+import { colors } from "../../../constant/constant";
+import theme from "../../../theme";
+import Header from "../../../Components/Header/header";
 import { useNavigate } from "react-router-dom";
 
 const Checkout = () => {

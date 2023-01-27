@@ -6,9 +6,8 @@ import {
   CardMedia,
   Typography,
   Grid,
-  Button,
 } from "@mui/material";
-import "../../style/banner.scss";
+import "../../../style/banner.scss";
 
 export const Banner = (props) => {
   const contentPosition = props.contentPosition
@@ -26,10 +25,6 @@ export const Banner = (props) => {
         </Typography>
 
         <Typography className="Caption">{props.item.Caption}</Typography>
-
-        {/* <Button variant="outlined" className="ViewButton">
-            View Now
-          </Button> */}
       </CardContent>
     </Grid>
   );

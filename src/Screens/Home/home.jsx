@@ -1,12 +1,12 @@
 import React from "react";
 import Carousel from "react-material-ui-carousel";
-import "../style/banner.scss";
+import "../../style/banner.scss";
 
-import { bannerItems, colors } from "../constant/constant";
+import { bannerItems, colors } from "../../constant/constant";
 import { Banner } from "./Banner/banner";
 import { Box } from "@mui/material";
-import Products from "../Products/product";
-import Header from "../Header/header";
+import Products from "./Products/product";
+import Header from "../../Components/Header/header";
 import { useState } from "react";
 import { useEffect } from "react";
 
@@ -46,7 +46,6 @@ const Home = () => {
 
   return (
     <>
-      {/* {console.log("cartLength", cartLength)} */}
       <Header cartLength={cartLength} />
       <Box
         margin={"50px"}

@@ -1,10 +1,10 @@
 import { Button, Container, Grid } from "@mui/material";
-import { colors, products } from "../constant/constant";
+import { colors, products } from "../../../constant/constant";
 import styled from "@emotion/styled";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
-import { slideInBottom } from "../animations";
-import SingleProduct from "./singleproduct";
+import { slideInBottom } from "../../../animations";
+import SingleProduct from "./SingleProduct/singleproduct";
 
 export const ProductImage = styled("img")(({ src, theme }) => ({
   src: src,
@@ -35,16 +35,13 @@ export const AddToCart = styled(Button, {
   opacity: 0.9,
 }));
 
-const Products = ({onCart,onAddCart, cartItems}) => {
+const Products = ({ onCart, onAddCart, cartItems }) => {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <>
-
-    
       <Container>
-        
         <Grid
           container
           spacing={{ xs: 2, md: 3 }}
@@ -64,7 +61,13 @@ const Products = ({onCart,onAddCart, cartItems}) => {
                 flexDirection={"column"}
                 alignItems="center"
               >
-                <SingleProduct onCart={onCart} onAddCart={onAddCart} product={product} matches={matches} cartItems={cartItems} />
+                <SingleProduct
+                  onCart={onCart}
+                  onAddCart={onAddCart}
+                  product={product}
+                  matches={matches}
+                  cartItems={cartItems}
+                />
               </Grid>
             );
           })}
