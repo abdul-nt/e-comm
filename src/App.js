@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Cart from "./Screens/Home/Cart";
-import Checkout from "./Screens/Home/Checkout/checkout";
-import HomePage from "./Screens/Home/HomePage";
+import Cart from "./screens/home/cart";
+import Checkout from "./screens/home/checkout/checkout";
+import HomePage from "./screens/home/homepage";
 
 function App() {
   useEffect(() => {

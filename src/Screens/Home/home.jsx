@@ -3,10 +3,10 @@ import Carousel from "react-material-ui-carousel";
 import "../../style/banner.scss";
 
 import { bannerItems, colors } from "../../constant/constant";
-import { Banner } from "./Banner/banner";
+import { Banner } from "./banner/banner";
 import { Box } from "@mui/material";
-import Products from "./Products/product";
-import Header from "../../Components/Header/header";
+import Products from "./products/product";
+import Header from "../../components/header/header";
 import { useState } from "react";
 import { useEffect } from "react";
 

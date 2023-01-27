@@ -54,8 +54,8 @@ export const Banner = (props) => {
   }
 
   return (
-    <Card raised className="Banner">
-      <Grid container spacing={0} className="BannerGrid">
+    <Card raised className="banner">
+      <Grid container spacing={0} className="bannerGrid">
         {items}
       </Grid>
     </Card>

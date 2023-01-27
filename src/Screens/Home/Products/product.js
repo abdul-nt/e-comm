@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 import { slideInBottom } from "../../../animations";
-import SingleProduct from "./SingleProduct/singleproduct";
+import SingleProduct from "../products/singleproduct/singleproduct"
 
 export const ProductImage = styled("img")(({ src, theme }) => ({
   src: src,

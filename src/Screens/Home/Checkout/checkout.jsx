@@ -3,7 +3,7 @@ import { Box, Button, Container, Typography } from "@mui/material";
 import { ThemeProvider } from "@mui/system";
 import { colors } from "../../../constant/constant";
 import theme from "../../../theme";
-import Header from "../../../Components/Header/header";
+import Header from "../../../components/header/header";
 import { useNavigate } from "react-router-dom";
 
 const Checkout = () => {

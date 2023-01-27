@@ -1,13 +1,13 @@
-import christmas1 from "../assets/HomePageAssets/christmas1.webp";
-import christmas2 from "../assets/HomePageAssets/christmas2.webp";
-import christmas3 from "../assets/HomePageAssets/christmas3.webp";
-import christmas4 from "../assets/HomePageAssets/christmas4.webp";
-import newyear1 from "../assets/HomePageAssets/newyear1.webp";
-import newyear2 from "../assets/HomePageAssets/newyear2.webp";
-import newyear3 from "../assets/HomePageAssets/newyear3.webp";
-import newyear4 from "../assets/HomePageAssets/newyear4.webp";
-import married1 from "../assets/HomePageAssets/married1.webp";
-import married2 from "../assets/HomePageAssets/married2.webp";
+import christmas1 from "../assets/homepageassets/christmas1.webp";
+import christmas2 from "../assets/homepageassets/christmas2.webp";
+import christmas3 from "../assets/homepageassets/christmas3.webp";
+import christmas4 from "../assets/homepageassets/christmas4.webp";
+import newyear1 from "../assets/homepageassets/newyear1.webp";
+import newyear2 from "../assets/homepageassets/newyear2.webp";
+import newyear3 from "../assets/homepageassets/newyear3.webp";
+import newyear4 from "../assets/homepageassets/newyear4.webp";
+import married1 from "../assets/homepageassets/married1.webp";
+import married2 from "../assets/homepageassets/married2.webp";
 
 export const colors = {
   primaryColor: "#ffa500",

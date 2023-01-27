@@ -1,5 +1,5 @@
 import Home from "./home";
-import MainLayout from "../../mainlayout/Mainlayout";
+import MainLayout from "../../mainlayout/mainlayout";
 import theme from "../../theme";
 import { ThemeProvider } from "@mui/system";
 

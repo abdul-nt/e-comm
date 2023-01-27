@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { Container } from "@mui/material";
 import { ThemeProvider } from "@mui/system";
-import Header from "../../../Components/Header/header";
+import Header from "../../../components/header/header";
 import theme from "../../../theme";
 import { quantityRange } from "../../../constant/constant";
-import { CartSummary } from "./CartSummary/cartsummary";
-import { CartTable } from "./CartTable/carttable";
-import { CartFooter } from "./CartFooter/cartfooter";
+import { CartSummary } from "./cartsummary/cartsummary";
+import { CartTable } from "./carttable/carttable";
+import { CartFooter } from "./cartfooter/cartfooter";
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState();
